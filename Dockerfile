@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian
+FROM balenalib/raspberrypi3
 
 VOLUME ["/config", "/data"]
 
@@ -6,10 +6,12 @@ ENV HOME=/config
 
 EXPOSE 32400
 
-ENV TERM=xterm
+ENV VERSION=1.15.2.793-782228f99
+ENV FILE=plexmediaserver_${VERSION}_armhf.deb
 
-ADD installPackages.sh /installPackages.sh
-RUN /installPackages.sh
+RUN curl -SsLO https://downloads.plex.tv/plex-media-server-new/${VERSION}/debian/${FILE} && \
+    dpkg -i ${FILE} && \
+    rm -f ${FILE}
 
 ADD start.sh /start.sh
 
