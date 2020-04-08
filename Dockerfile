@@ -6,7 +6,7 @@ ENV HOME=/config
 
 EXPOSE 32400
 
-ARG VERSION=1.18.9.2578-513b381af
+ARG VERSION=1.19.1.2630-72c16a276
 ENV FILE=plexmediaserver_${VERSION}_armhf.deb
 
 RUN curl -SsLO https://downloads.plex.tv/plex-media-server-new/${VERSION}/debian/${FILE} && \
